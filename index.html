@@ -1,34 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="ro" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoZ IDE — The Next-Generation IDE Built for Speed</title>
-    <meta name="description" content="RoZ IDE is a lightning-fast, AI-powered integrated development environment designed for modern developers. Minimal RAM, maximum performance.">
+    <title>RoZ IDE — un IDE pentru RoP, Object Pascal cu cuvinte-cheie românești</title>
+    <meta name="description" content="RoZ IDE traduce un fișier .rop în .pas, îl compilează cu Free Pascal și îl rulează, arătând fiecare diagnostic într-un singur panou. Object Pascal, scris în română.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RoZ IDE — un IDE pentru RoP, Object Pascal cu cuvinte-cheie românești">
+    <meta property="og:description" content="RoZ IDE traduce un fișier .rop în .pas, îl compilează cu Free Pascal și îl rulează, arătând fiecare diagnostic într-un singur panou.">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="RoZ IDE — un IDE pentru RoP, Object Pascal cu cuvinte-cheie românești">
+    <meta name="twitter:description" content="RoZ IDE traduce un fișier .rop în .pas, îl compilează cu Free Pascal și îl rulează, arătând fiecare diagnostic într-un singur panou.">
     <meta name="theme-color" content="#0f172a">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,aspect-ratio,line-clamp"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        roz: { DEFAULT: '#6366f1', dark: '#4f46e5', light: '#818cf8' },
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                    },
-                },
-            },
-        }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -93,16 +78,35 @@
         .menu-overlay.open { opacity: 1; pointer-events: auto; }
         .forum-placeholder { background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8)); border: 2px dashed rgba(99, 102, 241, 0.3); border-radius: 16px; min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s ease; }
         .forum-placeholder:hover { border-color: rgba(99, 102, 241, 0.6); background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); }
+        .lang-btn { color: #94a3b8; background: transparent; border: none; cursor: pointer; font-family: inherit; line-height: 1; transition: all 0.2s ease; }
+        .lang-btn:hover { color: #e2e8f0; }
+        .lang-btn.is-active { background: rgba(99, 102, 241, 0.9); color: #fff; }
         .footer-link { color: #64748b; transition: color 0.2s ease; font-size: 14px; }
         .footer-link:hover { color: #818cf8; }
         .stat-number { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #818cf8, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         @media (max-width: 640px) { .stat-number { font-size: 1.75rem; } .code-editor-content { font-size: 12px; } .line-numbers { width: 36px; font-size: 11px; } }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .js .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .js .reveal.visible { opacity: 1; transform: translateY(0); }
         .gradient-text { background: linear-gradient(135deg, #818cf8, #a78bfa, #6366f1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .typing-cursor { animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
     </style>
+    <!-- Tailwind, compiled. This WAS the tailwindcss CDN script plus the tailwind.config
+         object that followed it; the CDN generated this stylesheet at run time, and it is
+         captured here so that the page needs no JavaScript to be styled — and so that it
+         no longer fetches a script from a CDN in order to render at all.
+         It sits AFTER the page's own style block ON PURPOSE: the CDN appended its
+         stylesheet to head, so this is the order the page has always been rendered in.
+         Moving it before that block changes the rendering — measured, not assumed.
+         The Tailwind config it was compiled with is in HANDOFF.md; regenerate with the
+         recipe there, never by hand. -->    <style id="tailwind">
+*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.visible{visibility:visible}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.bottom-1\/4{bottom:25%}.left-0{left:0px}.left-1\/4{left:25%}.right-1\/4{right:25%}.top-0{top:0px}.top-1\/4{top:25%}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-12{height:3rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-72{height:18rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-96{height:24rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-72{width:18rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-96{width:24rem}.w-full{width:100%}.w-max{width:max-content}.w-px{width:1px}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-7xl{max-width:80rem}.max-w-md{max-width:28rem}.max-w-xl{max-width:36rem}.max-w-xs{max-width:20rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.rotate-\[-2deg\]{--tw-rotate:-2deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse-slow{animation:pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.scroll-smooth{scroll-behavior:smooth}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-indigo-500\/20{border-color:rgb(99 102 241 / 0.2)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.bg-amber-500\/20{background-color:rgb(245 158 11 / 0.2)}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-green-500{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.bg-indigo-400{--tw-bg-opacity:1;background-color:rgb(129 140 248 / var(--tw-bg-opacity, 1))}.bg-indigo-500\/10{background-color:rgb(99 102 241 / 0.1)}.bg-indigo-500\/20{background-color:rgb(99 102 241 / 0.2)}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-slate-700\/50{background-color:rgb(51 65 85 / 0.5)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-800\/40{background-color:rgb(30 41 59 / 0.4)}.bg-slate-800\/50{background-color:rgb(30 41 59 / 0.5)}.bg-slate-800\/60{background-color:rgb(30 41 59 / 0.6)}.bg-slate-800\/80{background-color:rgb(30 41 59 / 0.8)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-violet-500\/15{background-color:rgb(139 92 246 / 0.15)}.bg-violet-500\/20{background-color:rgb(139 92 246 / 0.2)}.bg-yellow-500{--tw-bg-opacity:1;background-color:rgb(234 179 8 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-indigo-500{--tw-gradient-from:#6366f1 var(--tw-gradient-from-position);--tw-gradient-to:rgb(99 102 241 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-violet-600{--tw-gradient-to:#7c3aed var(--tw-gradient-to-position)}.p-0\.5{padding:0.125rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pt-20{padding-top:5rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-\[1\.1\]{line-height:1.1}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-indigo-300{--tw-text-opacity:1;color:rgb(165 180 252 / var(--tw-text-opacity, 1))}.text-indigo-400{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-violet-400{--tw-text-opacity:1;color:rgb(167 139 250 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-\[0\.02\]{opacity:0.02}.opacity-\[0\.03\]{opacity:0.03}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-\[120px\]{--tw-blur:blur(120px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur-\[150px\]{--tw-blur:blur(150px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.duration-500{transition-duration:500ms}.after\:absolute::after{content:var(--tw-content);position:absolute}.after\:bottom-0::after{content:var(--tw-content);bottom:0px}.after\:left-0::after{content:var(--tw-content);left:0px}.after\:h-\[2px\]::after{content:var(--tw-content);height:2px}.after\:w-0::after{content:var(--tw-content);width:0px}.after\:bg-indigo-500::after{content:var(--tw-content);--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.after\:transition-all::after{content:var(--tw-content);transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:rotate-0:hover{--tw-rotate:0deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:text-indigo-400:hover{--tw-text-opacity:1;color:rgb(129 140 248 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:after\:w-full:hover::after{content:var(--tw-content);width:100%}.group:hover .group-hover\:shadow-indigo-500\/30{--tw-shadow-color:rgb(99 102 241 / 0.3);--tw-shadow:var(--tw-shadow-colored)}@media (min-width: 640px){.sm\:block{display:block}.sm\:inline{display:inline}.sm\:flex-row{flex-direction:row}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:flex{display:flex}.md\:hidden{display:none}.md\:h-20{height:5rem}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:gap-12{gap:3rem}.md\:py-16{padding-top:4rem;padding-bottom:4rem}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:py-32{padding-top:8rem;padding-bottom:8rem}.md\:pt-24{padding-top:6rem}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:block{display:block}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:gap-12{gap:3rem}.lg\:gap-16{gap:4rem}.lg\:gap-20{gap:5rem}.lg\:gap-8{gap:2rem}.lg\:p-12{padding:3rem}.lg\:p-8{padding:2rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:text-7xl{font-size:4.5rem;line-height:1}}
+    </style>
+    <script>/* The reveal animation hides its elements until JavaScript shows them.
+       Without this flag a visitor with scripting off gets a blank page below the
+       hero — and so does a headless screenshot. Marked here, before first paint,
+       so there is no flash of hidden content when scripting is on. */
+    document.documentElement.classList.add('js');</script>
 </head>
 <body class="antialiased">
 
@@ -115,27 +119,35 @@
                     <span class="text-xl font-bold tracking-tight text-white hidden sm:block">RoZ <span class="text-indigo-400">IDE</span></span>
                 </a>
                 <div class="hidden md:flex items-center gap-8">
-                    <a href="#features" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Features</a>
-                    <a href="#docs" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Docs</a>
-                    <a href="#forum" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Forum</a>
-                    <a href="#download" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Download</a>
+                    <a href="#features" data-i18n="nav.features" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Funcții</a>
+                    <a href="#docs" data-i18n="nav.docs" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Documentație</a>
+                    <a href="#forum" data-i18n="nav.forum" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Comunitate</a>
+                    <a href="#download" data-i18n="nav.download" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-indigo-500 after:transition-all hover:after:w-full">Descărcare</a>
                 </div>
                 <div class="hidden md:flex items-center gap-4">
-                    <a href="#" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Sign In</a>
-                    <a href="#download" class="btn-primary text-sm py-2.5 px-5">Get Started <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+                    <div class="flex items-center gap-1 rounded-lg border border-slate-700 p-0.5" role="group" data-i18n-aria="lang.group" aria-label="Limba paginii">
+                        <button type="button" data-lang-btn="ro" class="lang-btn px-2.5 py-1 rounded-md text-xs font-bold">RO</button>
+                        <button type="button" data-lang-btn="en" class="lang-btn px-2.5 py-1 rounded-md text-xs font-bold">EN</button>
+                    </div>
+                    <a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">GitHub</a>
+                    <a href="#download" data-i18n="nav.start" class="btn-primary text-sm py-2.5 px-5">Începe <svg aria-hidden="true" focusable="false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
                 </div>
-                <button id="hamburger" class="md:hidden hamburger" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
+                <button id="hamburger" class="md:hidden hamburger" aria-controls="mobileMenu" aria-expanded="false" data-i18n-aria="nav.menu" aria-label="Deschide meniul de navigare"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div id="menuOverlay" class="menu-overlay"></div>
         <div id="mobileMenu" class="mobile-menu">
-            <a href="#features" class="mobile-link">Features</a>
-            <a href="#docs" class="mobile-link">Docs</a>
-            <a href="#forum" class="mobile-link">Forum</a>
-            <a href="#download" class="mobile-link">Download</a>
+            <a href="#features" data-i18n="nav.features" class="mobile-link">Funcții</a>
+            <a href="#docs" data-i18n="nav.docs" class="mobile-link">Documentație</a>
+            <a href="#forum" data-i18n="nav.forum" class="mobile-link">Comunitate</a>
+            <a href="#download" data-i18n="nav.download" class="mobile-link">Descărcare</a>
             <div class="mt-8 pt-8 border-t border-slate-800">
-                <a href="#" class="block text-slate-400 hover:text-indigo-400 mb-4">Sign In</a>
-                <a href="#download" class="btn-primary text-center w-full justify-center py-3">Get Started Free</a>
+                <div class="flex items-center gap-1 rounded-lg border border-slate-700 p-0.5 mb-6 w-max" role="group" data-i18n-aria="lang.group" aria-label="Limba paginii">
+                    <button type="button" data-lang-btn="ro" class="lang-btn px-3 py-1.5 rounded-md text-sm font-bold">RO</button>
+                    <button type="button" data-lang-btn="en" class="lang-btn px-3 py-1.5 rounded-md text-sm font-bold">EN</button>
+                </div>
+                <a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="block text-slate-400 hover:text-indigo-400 mb-4">GitHub</a>
+                <a href="#download" data-i18n="nav.start" class="btn-primary text-center w-full justify-center py-3">Începe</a>
             </div>
         </div>
     </nav>
@@ -146,46 +158,47 @@
         <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-indigo-500/20 rounded-full blur-[120px] animate-pulse-slow"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/15 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 2s;"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 <div class="reveal">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        v2.0 Beta — Now Available
+                        <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                        <span data-i18n="hero.badge">Object Pascal, în română</span>
                     </div>
+                    <div class="max-w-xl">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
-                        <span class="text-white">The Next-Generation</span><br>
-                        <span class="gradient-text">IDE Built for Speed</span>
+                        <span class="text-white" data-i18n="hero.h1a">Scrie Object Pascal</span><br>
+                        <span class="gradient-text" data-i18n="hero.h1b">în română</span>
                     </h1>
-                    <p class="text-lg md:text-xl text-slate-400 max-w-xl mb-8 leading-relaxed">
-                        RoZ IDE delivers blistering-fast code editing with built-in AI assistance, zero bloat, and a developer-first experience. Runs on 50MB of RAM.
+                    <p class="text-lg md:text-xl text-slate-400 max-w-xl mb-8 leading-relaxed" data-i18n-html="hero.lead">
+                        RoP este Object Pascal cu cuvinte-cheie românești. RoZ îți traduce <span class="text-indigo-300 font-mono text-base">.rop</span> în <span class="text-indigo-300 font-mono text-base">.pas</span>, îl compilează cu Free Pascal, îl rulează și arată fiecare diagnostic într-un singur panou. <span class="text-indigo-300 font-mono text-base">.rop</span> este sursa; <span class="text-indigo-300 font-mono text-base">.pas</span> este un produs al translatării.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-10">
                         <a href="#download" class="btn-primary text-base">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                            Download Beta
-                            <span class="text-indigo-300 text-sm font-normal">(Free)</span>
+                            <svg aria-hidden="true" focusable="false" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            <span data-i18n="hero.btn.download">Descarcă</span>
                         </a>
                         <a href="#docs" class="btn-secondary text-base">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                            Read Docs
+                            <svg aria-hidden="true" focusable="false" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                            <span data-i18n="hero.btn.docs">Citește documentația</span>
                         </a>
                     </div>
                     <div class="flex flex-wrap items-center gap-8 md:gap-12">
                         <div>
-                            <div class="stat-number">50MB</div>
-                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">RAM Usage</div>
+                            <div class="stat-number">257</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1" data-i18n="hero.stat.dict">Intrări în dicționar</div>
                         </div>
                         <div class="w-px h-10 bg-slate-800 hidden sm:block"></div>
                         <div>
-                            <div class="stat-number">12ms</div>
-                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Type Latency</div>
+                            <div class="stat-number">0</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1" data-i18n="hero.stat.delphi">Dependențe de Delphi</div>
                         </div>
                         <div class="w-px h-10 bg-slate-800 hidden sm:block"></div>
                         <div>
-                            <div class="stat-number">50K+</div>
-                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1">Beta Users</div>
+                            <div class="stat-number">MIT</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wider mt-1" data-i18n="hero.stat.licence">Licență</div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div class="reveal relative" style="transition-delay: 0.2s;">
                     <div class="code-editor w-full max-w-2xl mx-auto transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
@@ -195,32 +208,28 @@
                             <div class="window-dot green"></div>
                             <div class="flex-1 flex justify-center">
                                 <div class="flex items-center gap-2 bg-slate-800/80 rounded-md px-3 py-1.5 text-xs text-slate-400 max-w-xs">
-                                    <svg class="w-3.5 h-3.5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                                    <span>main.py — RoZ IDE</span>
+                                    <svg aria-hidden="true" focusable="false" class="w-3.5 h-3.5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                    <span>main.rop — RoZ IDE</span>
                                 </div>
                             </div>
                         </div>
                         <div class="code-editor-content">
-                            <div class="code-line"><span class="line-numbers">1</span><span class="code-content"><span class="syn-keyword">import</span> <span class="syn-variable">asyncio</span></span></div>
-                            <div class="code-line"><span class="line-numbers">2</span><span class="code-content"><span class="syn-keyword">from</span> <span class="syn-variable">roz</span> <span class="syn-keyword">import</span> <span class="syn-function">AIAssistant</span>, <span class="syn-function">Workspace</span></span></div>
-                            <div class="code-line"><span class="line-numbers">3</span><span class="code-content"></span></div>
-                            <div class="code-line"><span class="line-numbers">4</span><span class="code-content"><span class="syn-comment"># Initialize RoZ IDE core engine</span></span></div>
-                            <div class="code-line"><span class="line-numbers">5</span><span class="code-content"><span class="syn-variable">assistant</span> = <span class="syn-function">AIAssistant</span>(<span class="syn-attr">model</span>=<span class="syn-string">"roz-llm-v2"</span>)</span></div>
-                            <div class="code-line"><span class="line-numbers">6</span><span class="code-content"><span class="syn-variable">workspace</span> = <span class="syn-function">Workspace</span>(<span class="syn-attr">path</span>=<span class="syn-string">"./project"</span>)</span></div>
+                            <div class="code-line"><span class="line-numbers">1</span><span class="code-content"><span class="syn-keyword">program</span> <span class="syn-variable">Salut</span>;</span></div>
+                            <div class="code-line"><span class="line-numbers">2</span><span class="code-content"></span></div>
+                            <div class="code-line"><span class="line-numbers">3</span><span class="code-content"><span class="syn-keyword">functie</span> <span class="syn-function">Dublu</span>(<span class="syn-variable">n</span>: <span class="syn-type">intreg</span>): <span class="syn-type">intreg</span>;</span></div>
+                            <div class="code-line"><span class="line-numbers">4</span><span class="code-content"><span class="syn-keyword">incepe</span></span></div>
+                            <div class="code-line"><span class="line-numbers">5</span><span class="code-content">  <span class="syn-function">Dublu</span> := <span class="syn-variable">n</span> * <span class="syn-number">2</span>;</span></div>
+                            <div class="code-line"><span class="line-numbers">6</span><span class="code-content"><span class="syn-keyword">sfarsit</span>;</span></div>
                             <div class="code-line"><span class="line-numbers">7</span><span class="code-content"></span></div>
-                            <div class="code-line"><span class="line-numbers">8</span><span class="code-content"><span class="syn-keyword">async def</span> <span class="syn-function">main</span>():</span></div>
-                            <div class="code-line"><span class="line-numbers">9</span><span class="code-content"> <span class="syn-comment"># Start intelligent code completion</span></span></div>
-                            <div class="code-line"><span class="line-numbers">10</span><span class="code-content"> <span class="syn-variable">result</span> = <span class="syn-keyword">await</span> <span class="syn-variable">assistant</span>.<span class="syn-function">analyze</span>(<span class="syn-variable">workspace</span>.<span class="syn-property">files</span>)</span></div>
-                            <div class="code-line"><span class="line-numbers">11</span><span class="code-content"> <span class="syn-variable">report</span> = <span class="syn-variable">result</span>.<span class="syn-function">generate</span>(<span class="syn-attr">format</span>=<span class="syn-string">"markdown"</span>)</span></div>
-                            <div class="code-line"><span class="line-numbers">12</span><span class="code-content"> <span class="syn-keyword">return</span> <span class="syn-variable">report</span>.<span class="syn-function">render</span>()</span></div>
-                            <div class="code-line"><span class="line-numbers">13</span><span class="code-content"></span></div>
-                            <div class="code-line"><span class="line-numbers">14</span><span class="code-content"><span class="syn-comment"># Auto-completed suggestion:</span></span></div>
-                            <div class="code-line"><span class="line-numbers">15</span><span class="code-content"><span class="syn-variable">config</span> = {</span></div>
-                            <div class="code-line"><span class="line-numbers">16</span><span class="code-content"> <span class="syn-attr">"theme"</span>: <span class="syn-string">"dark"</span>,</span></div>
-                            <div class="code-line"><span class="line-numbers">17</span><span class="code-content"> <span class="syn-attr">"font_size"</span>: <span class="syn-number">14</span>,</span></div>
-                            <div class="code-line"><span class="line-numbers">18</span><span class="code-content"> <span class="syn-attr">"ai_suggestions"</span>: <span class="syn-keyword">True</span></span></div>
-                            <div class="code-line"><span class="line-numbers">19</span><span class="code-content">} <span class="syn-punctuation"># ← AI generated</span></span></div>
-                            <div class="code-line"><span class="line-numbers">20</span><span class="code-content"><span class="typing-cursor">|</span></span></div>
+                            <div class="code-line"><span class="line-numbers">8</span><span class="code-content"><span class="syn-keyword">var</span></span></div>
+                            <div class="code-line"><span class="line-numbers">9</span><span class="code-content">  <span class="syn-variable">i</span>: <span class="syn-type">intreg</span>;</span></div>
+                            <div class="code-line"><span class="line-numbers">10</span><span class="code-content"></span></div>
+                            <div class="code-line"><span class="line-numbers">11</span><span class="code-content"><span class="syn-keyword">incepe</span></span></div>
+                            <div class="code-line"><span class="line-numbers">12</span><span class="code-content">  <span class="syn-keyword">pentru</span> <span class="syn-variable">i</span> := <span class="syn-number">1</span> <span class="syn-keyword">pana_la</span> <span class="syn-number">3</span> <span class="syn-keyword">executa</span></span></div>
+                            <div class="code-line"><span class="line-numbers">13</span><span class="code-content">    <span class="syn-keyword">daca</span> <span class="syn-function">Dublu</span>(<span class="syn-variable">i</span>) <span class="syn-operator">></span> <span class="syn-number">2</span> <span class="syn-keyword">atunci</span></span></div>
+                            <div class="code-line"><span class="line-numbers">14</span><span class="code-content">      <span class="syn-function">scrieln</span>(<span class="syn-string">'salut '</span>, <span class="syn-variable">i</span>);</span></div>
+                            <div class="code-line"><span class="line-numbers">15</span><span class="code-content"><span class="syn-keyword">sfarsit</span>.</span></div>
+                        
                         </div>
                     </div>
                 </div>
@@ -233,65 +242,65 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    Why RoZ IDE
+                    <svg aria-hidden="true" focusable="false" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span data-i18n="feat.badge">De ce RoZ IDE</span>
                 </div>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Built Different. Built Faster.</h2>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto">Every feature exists to make you faster. No bloat, no distractions — just pure coding velocity.</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-i18n="feat.h2">O limbă, un singur lanț de unelte</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto" data-i18n="feat.lead">Un editor, un traducător, un lanț de compilare și un singur panou de diagnostice — pentru o singură limbă, și nimic altceva.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div class="feature-card p-6 lg:p-8 reveal">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="feature-icon"><svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center"><span class="text-emerald-400 font-bold text-sm">0.5s</span></div></div>
+                        <div class="feature-icon"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><span class="text-indigo-400 font-bold text-sm">.rop</span></div></div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Blistering Performance</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4">Powered by a lightweight native engine, RoZ IDE uses under 50MB of RAM and launches in under a second. Your laptop won't even notice it's running.</p>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="feat.lang.title">Limbajul RoP</h3>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n-html="feat.lang.body">Object Pascal cu cuvinte-cheie românești — <span class="text-indigo-300">incepe</span> pentru <span class="text-slate-500">begin</span>, <span class="text-indigo-300">sfarsit</span> pentru <span class="text-slate-500">end</span>, <span class="text-indigo-300">daca</span> pentru <span class="text-slate-500">if</span>. RoZ îl traduce în Pascal canonic și îl trimite la FPC.</p>
                     <ul class="space-y-2">
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Sub-10ms keystroke latency</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Zero CPU spikes during indexing</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Native GPU-accelerated rendering</li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.lang.li1">61 de cuvinte-cheie, 50 de tipuri, 64 de rutine — 257 de intrări</span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.lang.li2">Formele Pascal sunt acceptate la intrare, dar nu se emit niciodată</span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n-html="feat.lang.li3">Dicționarul este date — editează <span class="text-indigo-300 font-mono">rop.dict</span> fără să recompilezi IDE-ul</span></li>
                     </ul>
                 </div>
                 <div class="feature-card p-6 lg:p-8 reveal" style="transition-delay: 0.1s;">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="feature-icon"><svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 11-5.656 5.656 4 4 0 015.656-5.656zm0 0c0-3.6-5.76-8.4-6.364-9.5a5.5 5.5 0 01-6.364 9.5c0 3.6 5.76 8.4 6.364 9.5z"/></svg></div>
-                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><span class="text-indigo-400 font-bold text-sm">v2</span></div></div>
+                        <div class="feature-icon"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center"><span class="text-amber-400 font-bold text-sm">1</span></div></div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Built-in AI Companion</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4">RoZ's intelligent AI assistant understands your codebase contextually. Get smart refactorings, automated test generation, and natural-language queries — all offline-capable.</p>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="feat.diag.title">Fiecare diagnostic, într-un singur panou</h3>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n-html="feat.diag.body">Erori lexicale și sintactice, sugestii de corectare, mesajele compilatorului FPC și erori de rulare — toate într-o singură listă, fiecare arătând linia din <span class="text-indigo-300 font-mono text-sm">.rop</span> pe care ai scris-o de fapt.</p>
                     <ul class="space-y-2">
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Context-aware code suggestions</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Natural language code generation</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Explain code with a single click</li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.diag.li1">Sugestii de corectare luate din dicționar</span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n-html="feat.diag.li2">O hartă a sursei, de la <span class="text-indigo-300 font-mono">.pas</span>-ul generat înapoi la liniile tale</span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.diag.li3">Erori de rulare și o urmărire a stivei după terminare</span></li>
                     </ul>
                 </div>
                 <div class="feature-card p-6 lg:p-8 reveal" style="transition-delay: 0.2s;">
                     <div class="flex items-start justify-between mb-6">
-                        <div class="feature-icon"><svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
-                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center"><span class="text-violet-400 font-bold text-sm">20+</span></div></div>
+                        <div class="feature-icon"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                        <div class="hidden lg:block"><div class="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center"><span class="text-violet-400 font-bold text-sm">0</span></div></div>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Modern Ecosystem</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4">Seamless Git integration, customizable workspaces, and native support for 20+ languages out of the box. Your toolchain, unified in one place.</p>
+                    <h3 class="text-xl font-bold text-white mb-3" data-i18n="feat.proj.title">Proiecte, fără fișiere de proiect</h3>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n-html="feat.proj.body">Un program RoP își declară dependențele cu <span class="text-indigo-300">foloseste</span>. RoZ urmărește asta ca să afle arborele de dependențe, așa că nu există niciun fișier de proiect care să fie ținut în pas cu codul.</p>
                     <ul class="space-y-2">
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Native Git flow with visual diffs</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Custom workspace profiles</li>
-                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Extensible plugin system</li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n-html="feat.proj.li1">Un arbore Proiect construit din graful <span class="text-indigo-300">foloseste</span></span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.proj.li2">Un Explorator grupat pe domenii și etichetat după fel</span></li>
+                        <li class="flex items-center gap-2 text-sm text-slate-400"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span data-i18n="feat.proj.li3">Mergi la declarație — în buffer și în unitățile pe care le folosește</span></li>
                     </ul>
                 </div>
             </div>
             <div class="mt-12 grid md:grid-cols-3 gap-6 reveal">
                 <div class="bg-slate-800/50 border border-slate-800 rounded-xl p-6 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                    <div><h4 class="font-semibold text-white text-sm">15 Language Stacks</h4><p class="text-xs text-slate-500">Python, Rust, Go, JS, TS, and more</p></div>
+                    <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center flex-shrink-0"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <div><h4 class="font-semibold text-white text-sm" data-i18n="feat.chip1.title">61 de cuvinte-cheie românești</h4><p class="text-xs text-slate-500">daca, sfarsit, incepe, functie, procedura</p></div>
                 </div>
                 <div class="bg-slate-800/50 border border-slate-800 rounded-xl p-6 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
-                    <div><h4 class="font-semibold text-white text-sm">End-to-End Encryption</h4><p class="text-xs text-slate-500">Your code stays on your machine</p></div>
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg></div>
+                    <div><h4 class="font-semibold text-white text-sm">Free Pascal 3.2.2</h4><p class="text-xs text-slate-500" data-i18n="feat.chip2.sub">{$mode objfpc} — fără Delphi, niciodată</p></div>
                 </div>
                 <div class="bg-slate-800/50 border border-slate-800 rounded-xl p-6 flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h9m-9-9v9m-4.5-4.5l4.5-4.5M19.5 9.5l4.5 4.5"/></svg></div>
-                    <div><h4 class="font-semibold text-white text-sm">60fps Scroll</h4><p class="text-xs text-slate-500">Even with 2M+ line files</p></div>
+                    <div class="w-12 h-12 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0"><svg aria-hidden="true" focusable="false" class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+                    <div><h4 class="font-semibold text-white text-sm" data-i18n="feat.chip3.title">Hartă a sursei</h4><p class="text-xs text-slate-500" data-i18n="feat.chip3.sub">Erorile FPC aduse înapoi la liniile tale .rop</p></div>
                 </div>
             </div>
         </div>
@@ -300,73 +309,63 @@
     <!-- ===== DOCS / DOWNLOAD SECTION ===== -->
     <section id="docs" class="py-20 md:py-32 bg-slate-900 relative overflow-hidden">
         <div class="absolute inset-0 opacity-[0.02]" style="background-image: linear-gradient(45deg, #6366f1 25%, transparent 25%, transparent 50%, #6366f1 50%, #6366f1 75%, transparent 75%, transparent); background-size: 60px 60px;"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div id="download" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <div class="reveal">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">Quick Start</div>
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Get Up and Running in 60 Seconds</h2>
-                    <p class="text-lg text-slate-400 mb-8 leading-relaxed">Install RoZ IDE on any platform — Windows, macOS, or Linux. One command, no bloatware, no telemetry.</p>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4" data-i18n="docs.badge">Pornire rapidă</div>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-i18n="docs.h2">Ia sursa, rulează-o, compilează-o</h2>
+                    <p class="text-lg text-slate-400 mb-8 leading-relaxed" data-i18n-html="docs.lead">RoZ este o aplicație pentru desktop care rulează pe Windows. Repository-ul vine cu un <span class="text-indigo-300 font-mono text-base">Roz.exe</span> precompilat, așa că îl poți rula fără un lanț de unelte — sau îl poți compila singur cu Free Pascal și Lazarus.</p>
                     <div class="bg-slate-800/60 border border-slate-700 rounded-xl p-4 mb-6 overflow-hidden">
                         <div class="flex items-center gap-2 px-3 py-2 bg-slate-900 border-b border-slate-700">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <span class="text-xs text-slate-500 ml-2 font-mono">terminal — bash</span>
+                            <span class="text-xs text-slate-500 ml-2 font-mono">terminal</span>
                         </div>
-                        <pre class="p-4 text-sm font-mono text-slate-300 overflow-x-auto"><code><span class="syn-comment"># Install via package manager</span>
-<span class="syn-comment"># macOS (Homebrew)</span>
-brew install roz-ide
+                        <pre class="p-4 text-sm font-mono text-slate-300 overflow-x-auto"><code data-i18n-html="docs.terminal"><span class="syn-comment"># Sursa este la github.com/roz-ide</span>
+<span class="syn-comment"># Un Roz.exe precompilat (Windows x64) vine cu ea — rulează-l.</span>
 
-<span class="syn-comment"># Windows (Winget)</span>
-winget install RoZ.IDE
+<span class="syn-comment"># Ca să-l compilezi singur ai nevoie de Free Pascal și Lazarus:</span>
+lazbuild Roz.lpi
 
-<span class="syn-comment"># Linux (APT)</span>
-echo "deb https://repo.roz.dev stable main" | sudo tee /etc/apt/sources.list.d/roz.list
-curl -fsSL https://repo.roz.dev/gpg.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/roz.gpg
-sudo apt update && sudo apt install roz-ide
-
-<span class="syn-comment"># Or download the binary directly</span>
-curl -L https://download.roz.dev/latest -o roz-ide.tar.gz</code></pre>
+<span class="syn-comment"># Dicționarul RoP este date — rop.dict nu se recompilează.</span>
+<span class="syn-comment"># examples/ conține programe mici de pornire.</span></code></pre>
                     </div>
                     <div class="flex items-center gap-4 text-sm text-slate-500">
-                        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Linux support</span></div>
+                        <div class="flex items-center gap-1.5"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Windows x64</span></div>
                         <div class="w-px h-4 bg-slate-700"></div>
-                        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>macOS Apple Silicon</span></div>
+                        <div class="flex items-center gap-1.5"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="docs.check2">Binar precompilat inclus</span></div>
                         <div class="w-px h-4 bg-slate-700"></div>
-                        <div class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>Windows x64</span></div>
+                        <div class="flex items-center gap-1.5"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span data-i18n="docs.check3">Licență MIT</span></div>
                     </div>
                 </div>
                 <div class="reveal" style="transition-delay: 0.2s;">
                     <div class="bg-slate-800/40 border border-slate-700 rounded-2xl p-6 lg:p-8">
-                        <h3 class="text-lg font-semibold text-white mb-4">What's in the Beta</h3>
+                        <h3 class="text-lg font-semibold text-white mb-4" data-i18n="inside.title">Ce conține</h3>
                         <div class="space-y-4">
                             <div class="flex items-center justify-between p-3 bg-slate-800/60 rounded-lg">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div>
-                                    <div><p class="text-sm font-medium text-white">Core Editor</p><p class="text-xs text-slate-500">Syntax highlighting, IntelliSense, multi-cursor</p></div>
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+                                    <div><p class="text-sm font-medium text-white" data-i18n="inside.1.title">Motorul limbajului RoP</p><p class="text-xs text-slate-500" data-i18n="inside.1.sub">Analiză lexicală, analiză sintactică, traducere — .rop → .pas cu hartă a sursei</p></div>
                                 </div>
-                                <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">Ready</span>
                             </div>
                             <div class="flex items-center justify-between p-3 bg-slate-800/60 rounded-lg">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-                                    <div><p class="text-sm font-medium text-white">AI Assistant</p><p class="text-xs text-slate-500">Code generation, refactoring, explanation</p></div>
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                                    <div><p class="text-sm font-medium text-white" data-i18n="inside.2.title">Integrare cu FPC</p><p class="text-xs text-slate-500" data-i18n="inside.2.sub">Compilare, rulare și urmărire — FPC 3.2+ cu {$mode objfpc}</p></div>
                                 </div>
-                                <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">Ready</span>
                             </div>
                             <div class="flex items-center justify-between p-3 bg-slate-800/60 rounded-lg">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
-                                    <div><p class="text-sm font-medium text-white">Git Integration</p><p class="text-xs text-slate-500">View, stage, commit, push — all inside the IDE</p></div>
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.523 3.824 10.235 9 11.235z"/></svg></div>
+                                    <div><p class="text-sm font-medium text-white" data-i18n="inside.3.title">Proiecte cu mai multe unități</p><p class="text-xs text-slate-500" data-i18n="inside.3.sub">Nu e nevoie de fișier de proiect — graful foloseste este arborele de dependențe</p></div>
                                 </div>
-                                <span class="text-xs text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">Ready</span>
                             </div>
-                            <div class="flex items-center justify-between p-3 bg-slate-800/60 rounded-lg border border-dashed border-slate-700">
+                            <div class="flex items-center justify-between p-3 bg-slate-800/60 rounded-lg">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8 h-8 rounded-lg bg-slate-700/50 flex items-center justify-center"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div>
-                                    <div><p class="text-sm font-medium text-white">Plugin Marketplace</p><p class="text-xs text-slate-500">Community extensions and themes</p></div>
+                                    <div class="w-8 h-8 rounded-lg bg-slate-700/50 flex items-center justify-center"><svg aria-hidden="true" focusable="false" class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+                                    <div><p class="text-sm font-medium text-white">rpdebug (Post-Mortem)</p><p class="text-xs text-slate-500" data-i18n="inside.4.sub">Urmărire a stivei din FPC -gl — linia ta .rop, nu linia .pas</p></div>
                                 </div>
-                                <span class="text-xs text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">Coming Soon</span>
                             </div>
                         </div>
                     </div>
@@ -375,36 +374,29 @@ curl -L https://download.roz.dev/latest -o roz-ide.tar.gz</code></pre>
         </div>
     </section>
 
-    <!-- ===== COMMUNITY / FORUM SECTION (giscus placeholder) ===== -->
+    <!-- ===== COMMUNITY SECTION ===== -->
     <section id="forum" class="py-20 md:py-32 bg-slate-950 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-4">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-9 3H5v2h2v-2zm8 0h-2v2h2v-2z" clip-rule="evenodd"/></svg>
-                    Join the RoZ Community
+                    <svg aria-hidden="true" focusable="false" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-9 3H5v2h2v-2zm8 0h-2v2h2v-2z" clip-rule="evenodd"/></svg>
+                    <span data-i18n="comm.badge">Comunitate</span>
                 </div>
-                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Get Help. Share Ideas. Build Together.</h2>
-                <p class="text-lg text-slate-400 max-w-2xl mx-auto">Connect with thousands of developers using RoZ IDE. Troubleshoot bugs, request features, and share your setups.</p>
+                <h2 class="text-3xl md:text-5xl font-bold text-white mb-4" data-i18n="comm.h2">Întreabă, raportează, propune</h2>
+                <p class="text-lg text-slate-400 max-w-2xl mx-auto" data-i18n="comm.lead">Întrebările, erorile și ideile merg toate într-un singur loc. Nu există un forum separat — issue tracker-ul repository-ului este locul unde se discută proiectul.</p>
             </div>
             <div class="max-w-4xl mx-auto reveal">
-                <div class="forum-placeholder p-8 lg:p-12 text-center" id="giscus-container">
+                <div class="forum-placeholder p-8 lg:p-12 text-center">
                     <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-9 3H5v2h2v-2zm8 0h-2v2h2v-2z" clip-rule="evenodd"/></svg>
+                        <svg aria-hidden="true" focusable="false" class="w-8 h-8 text-indigo-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-9 3H5v2h2v-2zm8 0h-2v2h2v-2z" clip-rule="evenodd"/></svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Community Discussions</h3>
-                    <p class="text-slate-400 mb-6 max-w-md mx-auto">Powered by <a href="https://giscus.app" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">giscus</a> — discussions powered by GitHub Discussions.</p>
-                    <div class="flex flex-wrap justify-center gap-3 mb-8">
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 border border-slate-700">#general</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 border border-slate-700">#showcase</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 border border-slate-700">#troubleshooting</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 border border-slate-700">#feature-requests</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400 border border-slate-700">#plugins</span>
-                    </div>
-                    <button id="loadGiscus" class="btn-primary text-sm py-3 px-6">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                        Load Discussion Forum
-                    </button>
-                    <p class="text-xs text-slate-600 mt-4">Or view the repository: <a href="https://github.com/roz-ide/roz-ide" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">github.com/roz-ide/roz-ide</a></p>
+                    <h3 class="text-xl font-semibold text-white mb-2" data-i18n="comm.card.title">Probleme și propuneri de cod</h3>
+                    <p class="text-slate-400 mb-6 max-w-md mx-auto" data-i18n="comm.card.body">Deschide o problemă cu comanda exactă și rezultatul ei, sau trimite o propunere de cod. Deocamdată repository-ul este toată comunitatea.</p>
+                    <a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-3 px-6">
+                        <svg aria-hidden="true" focusable="false" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        <span data-i18n="comm.btn">Deschide GitHub</span>
+                    </a>
+                    <p class="text-xs text-slate-600 mt-4" data-i18n="comm.note">Sursa, dicționarul și exemplele sunt toate în repository.</p>
                 </div>
             </div>
         </div>
@@ -413,54 +405,39 @@ curl -L https://download.roz.dev/latest -o roz-ide.tar.gz</code></pre>
     <!-- ===== FOOTER ===== -->
     <footer class="py-12 md:py-16 border-t border-slate-800 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-10">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
                         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-sm">RZ</div>
                         <span class="text-lg font-bold text-white">RoZ IDE</span>
                     </div>
-                    <p class="text-sm text-slate-500 leading-relaxed max-w-xs">The next-generation IDE built for speed, simplicity, and developer joy.</p>
+                    <p class="text-sm text-slate-500 leading-relaxed max-w-xs" data-i18n="foot.tagline">Un IDE pentru RoP — Object Pascal cu cuvinte-cheie românești. Construit cu Free Pascal și Lazarus.</p>
                     <div class="flex items-center gap-3 mt-4">
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-slate-700 transition-all" aria-label="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C9.57 21.8 16.534 17.3 16.534 17.3c1.089.746 1.632 1.47 1.632 1.47.593 1.357 1.233 2.208 1.233 2.208 1.07 1.833 2.805 1.303 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C9.57 21.8 16.534 17.3 16.534 17.3z"/></svg></a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-slate-700 transition-all" aria-label="Twitter"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-slate-700 transition-all" aria-label="Discord"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.66 12.66 0 00-.617-1.25.077.077 0 00-.078-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.147 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.147 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.106 14.09 14.09 0 001.226 1.994.077.077 0 00.084.028 19.839 19.839 0 005.993-3.03.077.077 0 00.032-.057c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+                        <a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 hover:text-indigo-400 hover:bg-slate-700 transition-all" aria-label="GitHub"><svg aria-hidden="true" focusable="false" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
                     </div>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Product</h4>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4" data-i18n="foot.product">Produs</h4>
                     <ul class="space-y-3">
-                        <li><a href="#features" class="footer-link">Features</a></li>
-                        <li><a href="#docs" class="footer-link">Documentation</a></li>
-                        <li><a href="#download" class="footer-link">Download</a></li>
-                        <li><a href="#" class="footer-link">Changelog</a></li>
-                        <li><a href="#" class="footer-link">Roadmap</a></li>
-                        <li><a href="#" class="footer-link">Pricing</a></li>
+                        <li><a href="#features" class="footer-link" data-i18n="nav.features">Funcții</a></li>
+                        <li><a href="#docs" class="footer-link" data-i18n="foot.start">Pornire</a></li>
+                        <li><a href="#download" class="footer-link" data-i18n="nav.download">Descărcare</a></li>
+                        <li><a href="#forum" class="footer-link" data-i18n="comm.card.title">Probleme și propuneri de cod</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Company</h4>
+                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Repository</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="footer-link">About</a></li>
-                        <li><a href="#" class="footer-link">Blog</a></li>
-                        <li><a href="#" class="footer-link">Careers</a></li>
-                        <li><a href="#" class="footer-link">Press Kit</a></li>
-                        <li><a href="#" class="footer-link">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">Legal</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                        <li><a href="#" class="footer-link">Terms of Service</a></li>
-                        <li><a href="#" class="footer-link">Cookie Policy</a></li>
-                        <li><a href="#" class="footer-link">License</a></li>
-                        <li><a href="#" class="footer-link">Security</a></li>
+                        <li><a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="foot.src">Cod sursă</a></li>
+                        <li><a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="footer-link">Issue tracker</a></li>
+                        <li><a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="foot.licence">Licență (MIT)</a></li>
+                        <li><a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="foot.changelog">Istoric modificări</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p class="text-sm text-slate-600">&copy; 2026 RoZ IDE, Inc. All rights reserved.</p>
-                <p class="text-sm text-slate-600">Built with &hearts; for developers everywhere. <span class="hidden sm:inline">|</span> <a href="#" class="text-slate-500 hover:text-indigo-400 transition-colors">GitHub Repository</a></p>
+                <p class="text-sm text-slate-600" data-i18n="foot.copyright">&copy; 2026 RoZ IDE — publicat sub licența MIT.</p>
+                <p class="text-sm text-slate-600"><span data-i18n="foot.tag2">Object Pascal cu cuvinte-cheie românești.</span> <span class="hidden sm:inline">|</span> <a href="https://github.com/roz-ide" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-indigo-400 transition-colors" data-i18n="foot.repolink">Repository GitHub</a></p>
             </div>
         </div>
     </footer>
@@ -477,6 +454,7 @@ curl -L https://download.roz.dev/latest -o roz-ide.tar.gz</code></pre>
             mobileMenu.classList.toggle('open');
             menuOverlay.classList.toggle('open');
             document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+            hamburger.setAttribute('aria-expanded', mobileMenu.classList.contains('open') ? 'true' : 'false');
         }
 
         hamburger.addEventListener('click', toggleMenu);
@@ -533,24 +511,166 @@ curl -L https://download.roz.dev/latest -o roz-ide.tar.gz</code></pre>
             });
         });
 
-        // === Giscus Load Button (placeholder for giscus embed) ===
-        document.getElementById('loadGiscus')?.addEventListener('click', function() {
-            const container = document.getElementById('giscus-container');
-            if (container) {
-                container.innerHTML = `
-                    <div class="w-full h-64 bg-slate-800/50 rounded-lg flex items-center justify-center border border-slate-700">
-                        <div class="text-center">
-                            <svg class="w-10 h-10 text-slate-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                            <p class="text-slate-500 text-sm">giscus iframe would load here</p>
-                            <p class="text-slate-600 text-xs mt-1">Configure your GitHub repo and giscus app at giscus.app</p>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <p class="text-xs text-slate-600">To enable real discussions, add the giscus script tag targeting your GitHub repository.</p>
-                    </div>
-                `;
-                this.style.display = 'none';
+        // === Language (Romanian is in the HTML; English lives here) ===
+        //
+        // Why this way round: Romanian is what the page is, so it is written
+        // into the markup and a visitor without JavaScript still gets the whole
+        // page. English is the translation, so it is the one that needs a
+        // script. Each element's Romanian is captured once, at load, before any
+        // switch — restoring from a capture cannot drift from the original.
+        const EN = {
+            'nav.features': 'Features',
+            'nav.docs': 'Docs',
+            'nav.forum': 'Forum',
+            'nav.download': 'Download',
+            'nav.start': 'Get Started',
+            'nav.menu': 'Toggle navigation menu',
+            'lang.group': 'Page language',
+
+            'hero.badge': 'Object Pascal, in Romanian',
+            'hero.h1a': 'Write Object Pascal',
+            'hero.h1b': 'in Romanian',
+            'hero.lead': 'RoP is Object Pascal with Romanian keywords. RoZ translates your <span class="text-indigo-300 font-mono text-base">.rop</span> to <span class="text-indigo-300 font-mono text-base">.pas</span>, compiles it with Free Pascal, runs it, and reports every diagnostic in one panel. The <span class="text-indigo-300 font-mono text-base">.rop</span> is the source; the <span class="text-indigo-300 font-mono text-base">.pas</span> is a product of the translation.',
+            'hero.btn.download': 'Download',
+            'hero.btn.docs': 'Read Docs',
+            'hero.stat.dict': 'Dictionary entries',
+            'hero.stat.delphi': 'Delphi dependencies',
+            'hero.stat.licence': 'Licence',
+
+            'feat.badge': 'Why RoZ IDE',
+            'feat.h2': 'One language, one toolchain',
+            'feat.lead': 'An editor, a translator, a build pipeline and a single diagnostics panel — for one language, and nothing else.',
+            'feat.lang.title': 'The RoP language',
+            'feat.lang.body': 'Object Pascal with Romanian keywords — <span class="text-indigo-300">incepe</span> for <span class="text-slate-500">begin</span>, <span class="text-indigo-300">sfarsit</span> for <span class="text-slate-500">end</span>, <span class="text-indigo-300">daca</span> for <span class="text-slate-500">if</span>. RoZ translates it to canonical Pascal and hands it to FPC.',
+            'feat.lang.li1': '61 keywords, 50 types, 64 routines — 257 entries',
+            'feat.lang.li2': 'Pascal spellings are accepted on input, never emitted',
+            'feat.lang.li3': 'The dictionary is data — edit <span class="text-indigo-300 font-mono">rop.dict</span> without rebuilding the IDE',
+            'feat.diag.title': 'Every diagnostic, one panel',
+            'feat.diag.body': "Lexical and syntax errors, typo suggestions, FPC's own compiler messages and run-time errors — reported in a single list, each one pointing at the <span class=\"text-indigo-300 font-mono text-sm\">.rop</span> line you actually wrote.",
+            'feat.diag.li1': 'Typo suggestions drawn from the dictionary',
+            'feat.diag.li2': 'A source map from the generated <span class="text-indigo-300 font-mono">.pas</span> back to your lines',
+            'feat.diag.li3': 'Run-time errors, and a post-mortem stack trace',
+            'feat.proj.title': 'Projects, without project files',
+            'feat.proj.body': 'A RoP program declares what it uses with <span class="text-indigo-300">foloseste</span>. RoZ follows that to work out the dependency tree, so there is no project file to keep in step with the code.',
+            'feat.proj.li1': 'A Project tree built from the <span class="text-indigo-300">foloseste</span> graph',
+            'feat.proj.li2': 'An Explorer grouped by scope and labelled by kind',
+            'feat.proj.li3': 'Go to declaration — in the buffer, and into the units it uses',
+            'feat.chip1.title': '61 Romanian keywords',
+            'feat.chip2.sub': '{$mode objfpc} — no Delphi, ever',
+            'feat.chip3.title': 'Source Map',
+            'feat.chip3.sub': 'FPC errors mapped back to your .rop lines',
+
+            'docs.badge': 'Quick Start',
+            'docs.h2': 'Get the source, run it, build it',
+            'docs.lead': 'RoZ is a Windows desktop application. The repository ships a prebuilt <span class="text-indigo-300 font-mono text-base">Roz.exe</span>, so you can run it without a toolchain — or build it yourself with Free Pascal and Lazarus.',
+            'docs.terminal': '<span class="syn-comment"># The source is at github.com/roz-ide</span>\n<span class="syn-comment"># A prebuilt Roz.exe (Windows x64) ships with it — just run it.</span>\n\n<span class="syn-comment"># To build it yourself you need Free Pascal and Lazarus, then:</span>\nlazbuild Roz.lpi\n\n<span class="syn-comment"># The RoP dictionary is data — rop.dict needs no rebuild.</span>\n<span class="syn-comment"># examples/ has small programs to start from.</span>',
+            'docs.check2': 'Prebuilt binary included',
+            'docs.check3': 'MIT licence',
+
+            'inside.title': "What's inside",
+            'inside.1.title': 'RoP Language Engine',
+            'inside.1.sub': 'Lexer, parser, translator — .rop → .pas with source map',
+            'inside.2.title': 'FPC Integration',
+            'inside.2.sub': 'Build, run, and debug — FPC 3.2+ with {$mode objfpc}',
+            'inside.3.title': 'Multi-Unit Projects',
+            'inside.3.sub': 'No project file needed — foloseste graph is the dependency tree',
+            'inside.4.sub': 'Stack trace from FPC -gl — your .rop line, not the .pas line',
+
+            'comm.badge': 'Community',
+            'comm.h2': 'Ask, report, propose',
+            'comm.lead': "Questions, bugs and ideas all go to one place. There is no separate forum — the repository's issue tracker is where the project is discussed.",
+            'comm.card.title': 'Issues and pull requests',
+            'comm.card.body': 'Open an issue with the exact command and its output, or send a pull request. The repository is the whole community for now.',
+            'comm.btn': 'Open GitHub',
+            'comm.note': 'The source, the dictionary and the examples are all in the repository.',
+
+            'foot.tagline': 'An IDE for RoP — Object Pascal with Romanian keywords. Built with Free Pascal and Lazarus.',
+            'foot.product': 'Product',
+            'foot.start': 'Getting started',
+            'foot.src': 'Source code',
+            'foot.licence': 'Licence (MIT)',
+            'foot.changelog': 'Changelog',
+            'foot.copyright': '\u00a9 2026 RoZ IDE — released under the MIT licence.',
+            'foot.tag2': 'Object Pascal with Romanian keywords.',
+            'foot.repolink': 'GitHub Repository'
+        };
+
+        // Title, description and the Open Graph locale follow the language too.
+        // og:url and og:image are deliberately absent: there is no real URL yet,
+        // and this page does not state things that are not true.
+        const META = {
+            ro: {
+                title: 'RoZ IDE — un IDE pentru RoP, Object Pascal cu cuvinte-cheie rom\u00e2ne\u0219ti',
+                desc: 'RoZ IDE traduce un fi\u0219ier .rop \u00een .pas, \u00eel compileaz\u0103 cu Free Pascal \u0219i \u00eel ruleaz\u0103, ar\u0103t\u00e2nd fiecare diagnostic \u00eentr-un singur panou. Object Pascal, scris \u00een rom\u00e2n\u0103.',
+                locale: 'ro_RO',
+                alternate: 'en_US'
+            },
+            en: {
+                title: 'RoZ IDE — an IDE for RoP, Object Pascal with Romanian keywords',
+                desc: 'RoZ IDE translates a .rop file to .pas, compiles it with Free Pascal and runs it, reporting every diagnostic in one panel. Object Pascal, written in Romanian.',
+                locale: 'en_US',
+                alternate: 'ro_RO'
             }
+        };
+
+        const langNodes = document.querySelectorAll('[data-i18n],[data-i18n-html],[data-i18n-aria]');
+        const roValue = new WeakMap();
+
+        langNodes.forEach(el => {
+            roValue.set(el, {
+                text: el.hasAttribute('data-i18n') ? el.textContent : null,
+                html: el.hasAttribute('data-i18n-html') ? el.innerHTML : null,
+                aria: el.hasAttribute('data-i18n-aria') ? el.getAttribute('aria-label') : null
+            });
+        });
+
+        const descTag = document.querySelector('meta[name="description"]');
+        const localeTag = document.querySelector('meta[property="og:locale"]');
+        const alternateTag = document.querySelector('meta[property="og:locale:alternate"]');
+
+        function applyLang(lang) {
+            document.documentElement.lang = lang;
+            document.title = META[lang].title;
+            if (descTag) descTag.setAttribute('content', META[lang].desc);
+            if (localeTag) localeTag.setAttribute('content', META[lang].locale);
+            if (alternateTag) alternateTag.setAttribute('content', META[lang].alternate);
+
+            langNodes.forEach(el => {
+                const ro = roValue.get(el);
+                if (ro.html !== null) {
+                    el.innerHTML = lang === 'ro' ? ro.html : (EN[el.dataset.i18nHtml] || ro.html);
+                } else if (ro.aria !== null) {
+                    el.setAttribute('aria-label', lang === 'ro' ? ro.aria : (EN[el.dataset.i18nAria] || ro.aria));
+                } else if (ro.text !== null) {
+                    el.textContent = lang === 'ro' ? ro.text : (EN[el.dataset.i18n] || ro.text);
+                }
+            });
+
+            document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+                const on = btn.getAttribute('data-lang-btn') === lang;
+                btn.classList.toggle('is-active', on);
+                btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+        }
+
+        // A stored choice always wins. Otherwise the browser decides, and
+        // Romanian is what anything that is not asking for English gets.
+        function storedLang() {
+            try { return localStorage.getItem('roz-lang'); } catch (e) { return null; }
+        }
+        function rememberLang(lang) {
+            try { localStorage.setItem('roz-lang', lang); } catch (e) { /* private mode */ }
+        }
+
+        const browserLang = (navigator.language || 'ro').toLowerCase();
+        applyLang(storedLang() || (browserLang.indexOf('en') === 0 ? 'en' : 'ro'));
+
+        document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang-btn');
+                applyLang(lang);
+                rememberLang(lang);
+            });
         });
 
         console.log('RoZ IDE — landing page loaded successfully.');
